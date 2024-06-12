@@ -3,7 +3,10 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
-  def show; end
+  def show
+    @item = Item.find(params[:id])
+    @recent_items = Item.order(created_at: 'DESC').limit(4)
+  end
 
   def new; end
 
