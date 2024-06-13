@@ -2,7 +2,8 @@
 
 module Admin
   class ItemsController < ApplicationController
-    before_action :admin_require
+    before_action :basic_auth
+    # before_action :admin_require
 
     def index
       @items = Item.all
