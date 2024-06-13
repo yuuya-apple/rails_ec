@@ -5,6 +5,7 @@ class Admin::UsersController < ApplicationController
 
   def create
     @user=User.new(user_params)
+    @user.is_admin=true
     if @user.save
       redirect_to(items_url,notice:"ユーザー登録完了")
     else
