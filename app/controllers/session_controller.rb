@@ -6,7 +6,12 @@ class SessionController < ApplicationController
     user=User.find_by(name:session_params[:name])
     if user&.authenticate(session_params[:password])
       session[:user_id]=user.id
-      redirect_to(root_url,notice:"ログインしました")
+
+      if user.is_admin?
+        redirect_to(admin_items_path,notice:"ログインしました")
+      else
+        redirect_to(root_url,notice:"ログインしました")
+      end
     else
       flash.now[:alert]="ユーザー名またはパスワードが違います"
       render :new ,status: :unprocessable_entity

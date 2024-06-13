@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
+  def admin_require
+    redirect_to(root_url) unless @current_user.is_admin?
+  end
+
 end
