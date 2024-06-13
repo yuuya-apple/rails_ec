@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'items#index'
 
   resources :items
+  resources :users , only: [:new,:create]
 
   namespace :admin do
     resources :users
@@ -14,7 +15,6 @@ Rails.application.routes.draw do
   get '/login', to: 'session#new'
   post '/login', to: 'session#create'
   delete '/logout', to: 'session#destroy'
-
 
 
 
