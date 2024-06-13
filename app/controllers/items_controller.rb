@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @recent_items = Item.order(created_at: 'DESC').limit(4)
+    @recent_items = Item.where.not(id:@item.id).order(created_at: 'DESC').limit(4)
   end
 
   def new; end
