@@ -28,17 +28,32 @@
                     </ul>
                 </li>
             </ul>
+            <div class="mx-3">
+                <%="AdiminUser" if @current_user&.is_admin? %>
+            </div>
             <form class="d-flex">
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
                     Cart
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
+                <% if @current_user %>
+                    <%=link_to("ログアウト",logout_path,data:{turbo_method: :delete},class:"btn btn-outline-dark ms-2")%>
+                <%else%>
+                    <%=link_to("ログイン",login_path,class:"btn btn-outline-dark ms-2")%>
+                <% end %>
             </form>
         </div>
     </div>
 </div>
-<%= yield %>
+<%if flash.notice.present?%>
+    <div class="alert alert-success">
+        <%=flash.notice%>
+    </div>
+<%end%>
+
+    <%= yield %>
+
 <!-- Footer-->
 <footer class="py-5 bg-dark">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
