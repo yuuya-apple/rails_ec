@@ -1,7 +1,11 @@
-class UserIsadminNotMil < ActiveRecord::Migration[7.0]
+# frozen_string_literal: true
 
-  def change
-    execute 'DELETE FROM users'
-    change_column :users,:is_admin,:boolean,default: false,null: false
+class UserIsadminNotMil < ActiveRecord::Migration[7.0]
+  def up
+    change_column :users, :is_admin, :boolean, default: false, null: false
+  end
+
+  def douwn
+    change_column :users, :is_admin, :boolean
   end
 end

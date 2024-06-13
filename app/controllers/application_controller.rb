@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-
-  helper_method:current_user
+  helper_method :current_user
   before_action :current_user
 
   private
@@ -14,5 +13,4 @@ class ApplicationController < ActionController::Base
   def admin_require
     redirect_to(root_url) unless @current_user.is_admin?
   end
-
 end
