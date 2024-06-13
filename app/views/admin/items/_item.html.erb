@@ -10,14 +10,16 @@
         <div class="card-body p-4">
             <div class="text-center">
                 <!-- Product name-->
-                <h5 class="fw-bolder"><%=link_to(item.name,item)%></h5>
+                <h5 class="fw-bolder"><%=link_to(item.name,edit_admin_item_path(item))%></h5>
                 <!-- Product price-->
                 $<%=item.price%>
             </div>
         </div>
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+            <div class="text-center">
+                <%=link_to("削除",admin_item_path(item),data:{turbo_confirm: "#{item.name}を削除します。よろしいですか？" , turbo_method: :delete },class:"btn btn-outline-dark mt-auto")%>
+            </div>
         </div>
     </div>
 </div>

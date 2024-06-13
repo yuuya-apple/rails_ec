@@ -1,5 +1,12 @@
 class Admin::ItemsController < ApplicationController
 
+  before_action:admin_require
+
+
+  def index
+    @items = Item.all
+  end
+
   def new
     @item=Item.new
   end
@@ -14,12 +21,23 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    item.update!(item_params)
+    redirect_to(admin_item_path, notice: "商品を更新しました。")
+  end
+
+  def destroy
+    Item.find(params[:id]).destroy
+    redirect_to(admin_item_path, notice: "商品を削除しました。")
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name,:price,:description)
+    params.require(:item).permit(:name,:price,:description,:image)
   end
 end
