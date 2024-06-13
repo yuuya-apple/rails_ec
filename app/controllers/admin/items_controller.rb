@@ -14,7 +14,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item=Item.new(item_params)
     if @item.save
-      redirect_to(items_url,notice:"商品を追加しました")
+      redirect_to(admin_items_url,notice:"商品を追加しました")
     else
       render :new,status: :unprocessable_entity
     end
