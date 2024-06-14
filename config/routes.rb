@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   root to: 'items#index'
 
   resources :items
-  resources :users, only: %i[new create]
 
   namespace :admin do
-    resources :users
     resources :items
   end
 

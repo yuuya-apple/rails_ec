@@ -18,11 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item">
-                    <%if @current_user&.is_admin? %>
-                        <%=link_to("home",admin_items_path,class:"nav-link active","aria-current":"page")%>
-                    <%else%>
-                        <%=link_to("home",items_path,class:"nav-link active","aria-current":"page")%>
-                    <%end%>
+                    <%=link_to("home",items_path,class:"nav-link active","aria-current":"page")%>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                 <li class="nav-item dropdown">
@@ -36,20 +32,11 @@
                 </li>
             </ul>
             <form class="d-flex">
-                <%if @current_user&.is_admin? %>
-                    <%=link_to("商品登録",new_admin_item_path,class:"btn btn-outline-dark ms-2")%>
-                <%else%>
                     <button class="btn btn-outline-dark" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
-                <%end%>
-                <% if @current_user %>
-                    <%=link_to("ログアウト",logout_path,data:{turbo_method: :delete},class:"btn btn-outline-dark ms-2")%>
-                <%else%>
-                    <%=link_to("ログイン",login_path,class:"btn btn-outline-dark ms-2")%>
-                <% end %>
             </form>
         </div>
     </div>
