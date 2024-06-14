@@ -50,15 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_13_005049) do
     t.string "description", default: "", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "password_digest", null: false
-    t.boolean "is_admin", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_users_on_name", unique: true
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end
