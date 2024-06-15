@@ -1,0 +1,35 @@
+<%=form_with model: [:admin,@item],local: true do |f|%>
+    <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-6">
+            <%if item.image.attached?%>
+                <%=image_tag item.image,size: '500x600' , class:"card-img-top mb-5 mb-md-0"%>
+            <%else%>
+                <img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
+            <%end%>
+            <%=f.file_field :image,class:'form-control my-3' %>
+        </div>
+        <div class="col-md-6">
+            <div class="small mb-1">SKU: BST-498</div>
+            <h1 class="display-5 fw-bolder">
+                <div class="form-group">
+                    <%=f.label :name,"商品名"%>
+                    <%=f.text_field :name,class:"form-control"%>
+                </div>
+            </h1>
+            <div class="fs-5 mb-5">
+               <div class="form-group">
+                   <span>
+                       $<%=f.number_field :price,class:"form-control"%>
+                   </span>
+               </div>
+            </div>
+                <div class="form-group lead">
+                    <%=f.label :description,"商品説明"%>
+                    <%=f.text_area:description,row:5,class:"form-control lead",id:"user_description"%>
+                </div>
+            <div class="d-flex">
+                <%=f.submit nil,class:"btn btn-outline-dark flex-shrink-0 my-3"%>
+            </div>
+        </div>
+    </div>
+<%end%>
