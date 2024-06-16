@@ -25,6 +25,8 @@ class CartDetailsController < ApplicationController
     cart_detail.quantity += params[:quantity].to_i
 
     session[:cart] = cart
+
+    redirect_to(items_path)
   end
 
   def destroy
