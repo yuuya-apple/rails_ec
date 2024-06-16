@@ -42,6 +42,7 @@ class CartDetailsController < ApplicationController
   # 仮API
   def checkout # rubocop:disable Hc/RailsSpecificActionName
     session.delete(:cart)
+    redirect_to(items_path)
   end
 
   private
