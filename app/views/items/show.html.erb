@@ -16,7 +16,7 @@
                     <span>$<%=@item.price%></span>
                 </div>
                 <p class="lead"><%=@item.description%></p>
-                <%=form_with(url:add_cart_path(id:@item.id),method: :put,local: true,class:"d-flex") do |f|%>
+                <%=form_with(url:add_cart_path(item_id:@item.id),method: :put,local: true,class:"d-flex") do |f|%>
                     <div class=""form-group>
                         <%=f.number_field :quantity ,class:"form-control text-center me-3",id:"inputQuantity",value:"1",style:"max-width: 3rem",type:"num"%>
                     </div>

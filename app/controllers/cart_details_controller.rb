@@ -41,6 +41,6 @@ class CartDetailsController < ApplicationController
   def cart_detail_params
     logger.debug("調査ログ：#{params}")
 
-    params.require(:cart_detail).permit(:item_id, :quantity)
+    params.permit(:item_id, :quantity)
   end
 end
