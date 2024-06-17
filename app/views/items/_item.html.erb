@@ -17,7 +17,7 @@
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="text-center">
-                <%=link_to('Add to cart',add_cart_path(id:item.id,quantity:1),data:{turbo_method: :put },class:"btn btn-outline-dark mt-auto")%>
+                <%=link_to('Add to cart',add_cart_path(cart_detail:{item_id:item.id,quantity:1}),data:{turbo_method: :put },class:"btn btn-outline-dark mt-auto")%>
             </div>
         </div>
     </div>

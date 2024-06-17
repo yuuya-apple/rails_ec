@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   put '/add_cart', to: 'cart_details#update'
   delete '/remove_cart', to: 'cart_details#destroy'
 
-  put '/checkout', to: 'cart_details#checkout'
+  put '/checkout', to: 'carts#destroy'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
