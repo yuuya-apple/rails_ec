@@ -1,14 +1,19 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :cart_size
+  before_action :set_cart, :cart_size
 
   CART_ID = :cart_id
 
   private
 
+  def set_cart
+    @cart = Cart.find_or_create_by(id: session[CART_ID])
+    session[CART_ID] ||= @cart.id
+  end
+
   def cart_size
-    @cart_size = session[CART_ID].nil? ? 0 : Cart.find(session[CART_ID]).cart_details.sum(&:quantity)
+    @cart_size = @cart.cart_details.sum(&:quantity)
   end
 
   def basic_auth
