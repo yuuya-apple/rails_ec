@@ -4,7 +4,7 @@ class CartDetailsController < ApplicationController
   skip_before_action :cart_size, only: [:index]
 
   def index
-    @cart_details = @cart.cart_details
+    @cart_details = @cart.cart_details.eager_load(:item)
     @cart_size =  @cart_details.sum(&:quantity)
   end
 
