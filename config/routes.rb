@@ -9,9 +9,11 @@ Rails.application.routes.draw do
     resources :items
   end
 
-  get '/login', to: 'session#new'
-  post '/login', to: 'session#create'
-  delete '/logout', to: 'session#destroy'
+  get '/cart', to: 'cart_details#index'
+  put '/add_cart', to: 'cart_details#update'
+  delete '/remove_cart', to: 'cart_details#destroy'
+
+  put '/checkout', to: 'carts#destroy'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
