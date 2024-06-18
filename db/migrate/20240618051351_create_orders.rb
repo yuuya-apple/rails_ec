@@ -9,6 +9,9 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.string :email, defult: '', null: false
       t.string :address, defult: '', null: false
       t.string :address2, defult: '', null: false
+      t.string :country, defult: '', null: false
+      t.string :state, defult: '', null: false
+      t.string :zip, defult: '', null: false
       t.boolean :is_address_same_billing_address, defult: false, null: false
       t.boolean :is_save_info, defult: false, null: false
       t.string :name_on_card, defult: '', null: false
