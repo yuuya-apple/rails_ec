@@ -1,0 +1,19 @@
+<div class="container">
+  <% @orders.each do |o| %>
+  <%=link_to(o,class:"btn btn-light d-flex row my-3 border border-3") do%>
+      <div class="col-3">
+        <%=o.created_at.strftime("%Y年 %m月 %d日") %>
+      </div>
+      <div class="col-3">
+        <%="#{o.firstname} #{o.lastname}"%>
+      </div>
+      <div class="col-3">
+        <%="#{o.order_details.sum(&:quantity)}点"%>
+      </div>
+      <div class="col-3">
+        $<%=o.order_details.sum{|d|d.item_price*d.quantity}%>
+      </div>
+
+    <%end%>
+  <%end%>
+</div>
