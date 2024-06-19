@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrderMailer < ApplicationMailer
   def welcome_email
     @order = params[:order]
