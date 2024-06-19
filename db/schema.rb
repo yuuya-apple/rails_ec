@@ -85,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_18_062133) do
     t.string "country", null: false
     t.string "state", null: false
     t.string "zip", null: false
-    t.boolean "is_address_same_billing_address", null: false
+    t.boolean "is_same_address", null: false
     t.boolean "is_save_info", null: false
     t.string "name_on_card", null: false
     t.integer "credit_card_number", default: 0, null: false
