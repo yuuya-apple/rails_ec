@@ -18,7 +18,6 @@ Rails.application.routes.draw do
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   mount LetterOpenerWeb::Engine, at: '/letter_opener'
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' unless ENV['PRODUCTION_FOR_REAL']
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
