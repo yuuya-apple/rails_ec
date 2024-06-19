@@ -78,7 +78,7 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :letter_opener_web
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
