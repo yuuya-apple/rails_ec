@@ -1,0 +1,5 @@
+<%= @order.firstname %> 様
+# 購入明細
+<% @order.order_details.map do |d| %>
+  <%="商品名：#{d.item_name},単価：#{d.item_price}、数量：#{d.quantity}"%>
+<%end%>

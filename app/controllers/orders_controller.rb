@@ -1,8 +1,17 @@
 class OrdersController < ApplicationController
+  before_action :basic_auth, only: %i[index show]
+  def index
+    @orders = Order.all.eager_load(:order_details)
+  end
+
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def create
     cart_details = @cart.cart_details.eager_load(:item)
 
-    redirect_to(cart_path, notice: 'カートが空です') if cart_details.blank?
+    redirect_to(cart_path, notice: 'カートが空です') and return if cart_details.blank?
 
     order = Order.new(order_params)
     order.save
@@ -18,6 +27,8 @@ class OrdersController < ApplicationController
     end
 
     @cart.destroy
+
+    OrderMailer.with(order:).welcome_email.deliver_now
 
     redirect_to(root_path, notice: '購入ありがとうございます')
   end
