@@ -1,0 +1,188 @@
+
+<div class="container py-3">
+  <main>
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Your cart</span>
+          <span class="badge bg-primary rounded-pill">
+            <%=@cart_size%>
+          </span>
+        </h4>
+        <ul class="list-group mb-3">
+          <% @order.order_details.each do |detail| %>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div class="d-flex flex-column">
+                <div class="mb-auto">
+                  <h6 class="my-0"><%= detail.item_name%></h6>
+                </div>
+                <div class="d-flex justify-content-start small">
+                  <span class="badge bg-primary rounded-pill">
+                    <%= detail.quantity%>
+                  </span>
+                  $<%= detail.item_price%>
+                </div>
+              </div>
+              <div class="d-flex flex-column">
+                <div class="mb-auto">
+                  <span class="text-body-secondary">
+                    $<%= detail.quantity*detail.item_price%>
+                  </span>
+                </div>
+              <div>
+            </li>
+          <%end%>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>$<%= @order.order_details.sum{|c| c.quantity*c.item_price}%></strong>
+          </li>
+        </ul>
+
+        <form class="card p-2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Promo code">
+          </div>
+        </form>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Billing address</h4>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <div class="form-label">
+                Firstname
+              </div>
+              <div class="form-control">
+                <%=@order.firstname %>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-label">
+                Lastname
+              </div>
+              <div class="form-control">
+                <%=@order.lastname %>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-label">
+                Username
+              </div>
+              <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <div class="form-control">
+                  <%=@order.username %>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-label">
+                Email
+              </div>
+              <div class="form-control">
+                <%=@order.email %>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-label">
+                Address
+              </div>
+              <div class="form-control">
+                <%=@order.address %>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-label">
+                Address2
+              </div>
+              <div class="form-control">
+                <%=@order.address2 %>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-label">
+                Country
+              </div>
+              <div class="form-control">
+                <%=@order.country %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-label">
+                State
+              </div>
+              <div class="form-control">
+                <%=@order.state %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-label">
+                Zip
+              </div>
+              <div class="form-control">
+                <%=@order.zip %>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
+          <div class="form-check">
+            <input type="checkbox" onclick='return false;'class="form-check-input" <%if @order.is_same_address?%>checked<%end%>>
+            <label class="form-check-label">
+              Shipping address is the same as my billing address
+            </label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" onclick='return false;'class="form-check-input" <%if @order.is_save_info?%>checked<%end%>>
+            <label class="form-check-label">
+              Save this information for next time
+            </label>
+          </div>
+          <hr class="my-4">
+          <h4 class="mb-3">Credit card</h4>
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <div class="form-label">
+                Name on card
+              </div>
+              <div class="form-control">
+                <%=@order.name_on_card %>
+              </div>
+              <small class="text-body-secondary">Full name as displayed on card</small>
+            </div>
+            <div class="col-md-6">
+              <div class="form-label">
+                Credit card number
+              </div>
+              <div class="form-control">
+                <%=@order.credit_card_number %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-label">
+                Expiration
+              </div>
+              <div class="form-control">
+                <%=@order.expiration %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-label">
+                CVV
+              </div>
+              <div class="form-control">
+                <%=@order.cvv %>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
+      </div>
+    </div>
+  </main>
+  <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+    <p class="mb-1">&copy; 2017–2023 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>

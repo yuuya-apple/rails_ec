@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'items#index'
 
   resources :items
+  resources :orders
 
   namespace :admin do
     resources :items
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
   delete '/remove_cart', to: 'cart_details#destroy'
 
   put '/checkout', to: 'carts#destroy'
+
+  mount LetterOpenerWeb::Engine, at: '/letter_opener'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
