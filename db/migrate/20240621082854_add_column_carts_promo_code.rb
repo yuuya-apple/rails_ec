@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddColumnCartsPromoCode < ActiveRecord::Migration[7.0]
   def up
     change_table :carts do |t|
