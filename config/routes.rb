@@ -5,12 +5,12 @@ Rails.application.routes.draw do
 
   resources :items
   resources :orders
+  resources :carts, only: %i[update show]
 
   namespace :admin do
     resources :items
   end
 
-  get '/cart', to: 'cart_details#index'
   put '/add_cart', to: 'cart_details#update'
   delete '/remove_cart', to: 'cart_details#destroy'
 

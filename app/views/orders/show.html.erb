@@ -32,17 +32,22 @@
               <div>
             </li>
           <%end%>
+          <% if @order.discount_code.present? %>
+            <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+                <div class="text-success">
+                  <h6 class="my-0">Promo code</h6>
+                  <small><%=@order.discount_code%></small>
+                </div>
+                <span class="text-success">
+                  −$<%=@order.discount_price%>
+                </span>
+            </li>
+          <%end%>
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (USD)</span>
-            <strong>$<%= @order.order_details.sum{|c| c.quantity*c.item_price}%></strong>
+            <strong>$<%= [@order.order_details.sum{|c| c.quantity*c.item_price}-@order.discount_price,0].max%></strong>
           </li>
         </ul>
-
-        <form class="card p-2">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Promo code">
-          </div>
-        </form>
       </div>
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Billing address</h4>
